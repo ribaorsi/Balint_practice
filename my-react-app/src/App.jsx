@@ -13,7 +13,7 @@ const App= () => {
     <div>
       <h1>Hello world</h1>
       <p className="par">Ez egy <br />szöveg</p>
-      <div id="egyedi">Ez {number} {carName} {cars} {man} {nullVariable} {myFunction()} </div>
+      <div id="egyedi">Ez {number} {carName} {cars} {nullVariable} {myFunction()} </div>
       <input type="password" placeholder='jelszo1234'/>
       
       <div className="brand">
