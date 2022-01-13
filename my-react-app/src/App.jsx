@@ -1,46 +1,63 @@
-const carName = 'Opel'
-const number = 123
-const cars = ['Opel', 'BMW', 'Volvo']
-const man = {
-  firstName: 'John',
-  lastName: 'Doe'
+import React, { useState } from 'react';
+
+const cars = [
+  {brand: "Toyota", model: "yaris", topSpeed: "190km/h"},
+  {brand: "Mercedes", model: "C63", topSpeed: "260km/h"},
+  {brand: "Mazda", model: "6", topSpeed: "210km/h"},
+  {brand: "Mazda", model: "Civic", topSpeed: "200km/h"},
+  {brand: "Audi", model: "A4", topSpeed: "220km/h"},
+]
+
+let isHomePage = true;
+
+const changePage = () => {
+  console.log(isHomePage);
+  isHomePage = !isHomePage
+  console.log(isHomePage);
 }
-const nullVariable = null
-const myFunction = () => {}
+/*
+const changePage = () => {
+  if (isHomePage = true) {
+    isHomePage.valueOf.toggle
+    
+  }
+  
+  console.log(isHomePage);
+}
+*/
 
 const App= () => {
+
+  const[value, setValue]=useState("Text")
+
+  const transformToDiv = (carObject) => {
+    return <div>{carObject.brand} - {carObject.model} ({carObject.topSpeed})</div>
+  }
+
   return (
     <div>
       <h1>Hello world</h1>
-      <p className="par">Ez egy <br />szöveg</p>
-      <div id="egyedi">Ez {number} {carName} {cars} {man} {nullVariable} {myFunction()} </div>
-      <input type="password" placeholder='jelszo1234'/>
-      
-      <div className="brand">
-        <p>Márka: </p>
-        <p><em>Opel</em></p>
-        <p>Ajtók száma: 4</p>
-      </div>
+      {
+        <div>
+          {
+            isHomePage ? 
+            <div>Home Page</div> : 
+            <div>Landing Page</div>
+          }
+        </div>
+      }  
 
-      <div className="brand">
-        <p>Márka: </p>
-        <p><em>Volvo</em></p>
-        <p>Ajtók száma: 5</p>
-      </div>
+      <button onClick={changePage}>Click</button>
 
-      <div className="brand">
-        <p>Márka: </p>
-        <p><em>Ford</em></p>
-        <p>Ajtók száma: 4</p>
-      </div>
+      <hr />
+      <input type="text" value={value} onChange={(e)=>setValue(e.target.value)} />
+      <button disabled={value.length <3}>Submit</button>
+      {value.length <3 && <p>Min 3 char!</p>}
 
-      <div className="brand">
-        <p>Márka: </p>
-        <p><em>Opel</em></p>
-        <p>Ajtók száma: 4</p>
-      </div>
+    {cars.map((transformToDiv)=>)}
     </div>
   );
+  
 }
 
 export default App;
